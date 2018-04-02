@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      locale="#{facesContext.externalContext.requestLocale}">
+    <html>
+        <h:head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <!-- BOOTSTRAP STYLES-->
+            <link href="content/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+            <!-- FONTAWESOME STYLES-->
+            <link href="content/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+            <!-- CUSTOM STYLES-->
+            <link href="content/css/custom.css" rel="stylesheet" type="text/css"/>
+            <!-- GOOGLE FONTS-->
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        </h:head>
+
+        <h:body>
+            
+            <div id="wrapper">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+               <div class="adjust-nav">
+                    <!-- CABECERA -->
+                    <ui:insert name="header">
+                        <ui:include src="/comun/cabecera.xhtml"/>
+                    </ui:insert>               
+               </div>
+            </div>
+            <!-- /. NAV TOP  -->
+            <nav class="navbar-default navbar-side" role="navigation">
+                    <!-- MENU -->
+                    <ui:insert name="menus">
+                        <ui:include src="/comun/menu.xhtml"/>
+                    </ui:insert>   
+            </nav>
+            <!-- /. NAV SIDE  -->
+            <div id="page-wrapper" >
+                <div id="page-inner" >
+                    <div class="row">
+                        <div class="col-md-12" style="color: #696969;">
+                        <!-- CUERPO -->
+                        <ui:insert name="body">
+                            <ui:include src="/comun/cuerpo.xhtml"/>
+                        </ui:insert> 
+
+                        </div>
+                    </div>              
+                     <!-- /. ROW  -->
+                    <hr />              
+                     <!-- /. ROW  -->           
+                </div>
+                 <!-- /. PAGE INNER  -->
+            </div>
+            <!-- /. PAGE WRAPPER  -->
+            </div>
+            <div class="footer">  
+                <div class="row">
+                     <!-- PIE -->
+                    <ui:insert name="pie">
+                        <ui:include src="/comun/pie.xhtml"/>
+                    </ui:insert>               
+                </div>
+            </div>
+            
+            <!--
+                <div id="contenedor">
+
+			<div id="cabecera">
+                            <ui:insert name="header">
+                                <ui:include src="/comun/cabecera.xhtml"/>
+                            </ui:insert>        
+			</div>
+                    
+                	<div id="menu">	
+                            <ui:insert name="menus">
+                                <ui:include src="/comun/menu.xhtml"/>
+                            </ui:insert>        
+			</div>
+
+			<div id="cuerpo">
+                            <ui:insert name="body">
+                                <ui:include src="/comun/cuerpo.xhtml"/>
+                            </ui:insert>  
+			</div>
+
+			<div id="pie">
+                            <ui:insert name="pie">
+                                <ui:include src="/comun/pie.xhtml"/>
+                            </ui:insert>  
+			</div>
+            </div>
+            !-->
+
+        </h:body>
+    </html>
+</f:view>    
+    

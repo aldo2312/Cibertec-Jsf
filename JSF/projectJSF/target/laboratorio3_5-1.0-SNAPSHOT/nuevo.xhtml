@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" >
+    <h:head>
+    </h:head>
+    <h:body> 
+    <ui:composition template="/plantillas/layout.xhtml">
+                <ui:define name="body">
+                    <h:outputText value="Bienvenido al Sistema  #{login.username}"/>
+                    <h:form>
+                         <p:panelGrid  columns="3" id="panel" styleClass="ui-panelgrid" >
+                             <f:facet name="header">
+                                 #{msjs.titulo_cliente_nuevo}
+                             </f:facet> 
+                             <p:outputLabel for="nombre:" value="#{msjs.form_nombre}" />
+                                 <p:inputText value="#{clienteBean.cliente.nombre}" 
+                                              required="true"
+                                              label="#{msjs.form_nombre}"
+                                              id="nombre">
+                                 <p:ajax update="msgNombre" event="blur"/>
+                                 </p:inputText>
+                                 <p:message id="msgNombre" for="nombre"/>
+                             
+                             <p:outputLabel for="apellido:" value="#{msjs.form_apellido}" />
+                                 <p:inputText value="#{clienteBean.cliente.apellido}" 
+                                              required="true"
+                                              label="#{msjs.form_apellido}"
+                                              id="apellido">
+                                     <f:validateLength maximum="20"/>
+                                     <p:ajax update="msgApellido" event="blur"/>
+                                 </p:inputText>   
+                                 <p:message id="msgApellido" for="apellido" />
+                             <p:outputLabel value="Genero"/>
+                             <p:selectOneRadio value="#{clienteBean.cliente.genero}" 
+                                              style="selectOneRadio"
+                                              id ="genero"
+                                              layout="pageDirection">
+                                 <f:selectItems value="#{listados.generos}"/>
+                             </p:selectOneRadio>
+                             <p:message  for="genero"/>
+                             
+                             <p:outputLabel value="Profesion"/>
+                                 <p:selectOneListbox value="#{clienteBean.cliente.profesion}" 
+                                                     style="width: 7em;"
+                                                     id ="profesion">
+                                                     
+                                     <f:selectItems value="#{listados.profesiones}"/>
+                                     <p:ajax update="msgProfesion" listener="#{clienteBean.cliente.profesion}"/>
+                                 </p:selectOneListbox>
+                                <p:message id="msgProfesion" for="profesion"/>
+                             
+                             <p:outputLabel value="Numero Movil"/>
+                             <p:inputMask value="#{clienteBean.cliente.numeroMovil}"
+                                          mask="999-999999" id="numeroMovil" >
+                                 <f:converter converterId="numeroMovil"/>
+                             </p:inputMask>
+                             <p:message for="numeroMovil"/>
+                             
+                             <p:outputLabel value="Desea recibir publicidad?"/>
+                             <p:selectBooleanCheckbox value="#{clienteBean.cliente.publicidad}"
+                                                      id="publicidad"/>
+                             <p:message for="publicidad"/>
+                             <p:outputLabel value="Correo Electrónico"/>
+                             <p:inputText value="#{clienteBean.cliente.correoElectronico}"
+                                          id="correo"/>
+                             <p:message for="correo"/>
+                             
+                             <p:outputLabel value="DNI" for="dni"/>
+                             <p:inputText value="#{clienteBean.cliente.numeroDocumento}"
+                                          label="DNI"
+                                          id="dni">
+                                  <f:validateRegex pattern="[0-9]{8}"/>
+                             </p:inputText>    
+                             <p:message for="dni"/>
+                             
+                             <p:outputLabel value="Cantidad Hijos" for="cantidadHijos" />
+                             <p:inputText value="#{clienteBean.cliente.cantidadHijos}" 
+                                          label="Cantidad Hijos"
+                                          id="cantidadHijos"/> 
+                             <p:message for="cantidadHijos"/>
+                             
+                             <p:outputLabel value="Fecha Nacimiento" for="fecNac"/>
+                             
+                             <p:calendar  value="#{clienteBean.cliente.fechaNacimiento}"
+                                              label="Fecha Nacimiento"
+                                              required="true"  id="fecNac"
+                                              effect="fadeIn" maxdate="today"
+                                              pattern="dd/mm/yyyy" readonlyInput="true">
+                             </p:calendar> 
+                              <p:message for="fecNac" />
+                              <f:facet name="footer">
+                                <p:commandButton value="Registrar" action="#{clienteBean.registrar}"
+                                                 update="@form"/>
+                                <p:commandButton value="Reset Tag" update="panel"
+                                    process="@this">
+                                    <p:resetInput target="panel" />
+                                </p:commandButton>
+                             </f:facet>
+                         </p:panelGrid>
+                     </h:form>
+                 </ui:define>
+            </ui:composition>    
+    </h:body>
+</html>
+

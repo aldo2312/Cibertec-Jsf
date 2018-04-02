@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"   >
+    <h:head>
+        
+    </h:head>
+    <h:body>
+  <ui:composition template="/plantillas/layout.xhtml">
+      <ui:define name="body">
+         <h:outputText value="#{reporte.titulo}"/>
+         <h:form>     
+         <p:dataTable var="cli" value="#{reporte.cliente}"    >
+             <p:column headerText="nombre" width="30" >
+                    <h:outputText value="#{cli.nombre}" />
+                </p:column>
+
+                <p:column headerText="apellido" width="30" >
+                    <h:outputText value="#{cli.apellido}" />
+                </p:column>
+
+                <p:column headerText="profesion" width="30">
+                    <h:outputText value="#{cli.profesion}" />
+                </p:column>
+                <p:column headerText="numeromovil" width="30">
+                    <h:outputText value="#{cli.numeroMovil}" />
+                </p:column>
+         
+                <p:column headerText="" width="25">
+                    
+                      <h:commandLink  value="Modificar"
+                                         actionListener="#{clienteBean.confirmarAccion}" 
+                                         action="#{clienteBean.irModificarCliente}"
+                                         styleClass="impar">
+                                <f:attribute name="codigo" value="#{cli.codigo}"/>
+                                
+                            </h:commandLink>
+                            
+                </p:column>                                         
+                <p:column headerText="" width="25">
+                     <h:commandLink value="Eliminar"
+                                         actionListener="#{clienteBean.confirmarAccion}" 
+                                         action="#{clienteBean.eliminarCliente}"
+                                         styleClass="impar">
+                                <f:attribute name="codigo" value="#{cli.codigo}"/>
+                                
+                            </h:commandLink>
+                 </p:column> 
+                
+             </p:dataTable>
+         </h:form> 
+         </ui:define></ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+
+        <div class="navbar-header"> 
+            <a class="navbar-brand" href="#">
+                <img src="content/img/logo.png" />
+            </a>                          
+        </div>
+        <h:form>
+        <span class="logout-spn" > 
+            <strong> <h:outputFormat value="#{msjs.mensaje_bienvenida} #{login.username}" /> </strong>   
+
+            <h:commandLink action="#{login.logout()}" styleClass="par">
+                <h:outputFormat value="#{msjs.enlace_logout}">
+                </h:outputFormat>   
+            </h:commandLink>
+        </span>            
+        </h:form>
+    </h:body>
+</html>
